@@ -27,31 +27,31 @@ export default function Home() {
       <div className="title">title: {trackPlaying.title}</div>
       <div className="album">album: {trackPlaying.album}</div>
       <style jsx>{`
-          .page {
-            @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,400;1,400&display=swap');
-            font-family: 'Josefin Sans', sans-serif;
-            padding: 1rem;
-            margin: 1rem;
-          }
-          h1 {
-            margin: 1rem 0rem 1rem 0rem;
-          }
-          img {
-            width: 100%;
-            max-width: 60rem;
-          }
-          .artist {
-            font-size: 1.5rem;
-            margin: 1rem 0rem 1rem 0rem;
-          }
-          .title {
-            font-size: 1.5rem;
-            margin: 1rem 0rem 1rem 0rem;
-          }
-          .album {
-            font-size: 1.5rem;
-            margin: 1rem 0rem 1rem 0rem;
-          }
+        .page {
+          @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,400;1,400&display=swap');
+          font-family: 'Josefin Sans', sans-serif;
+          padding: 1rem;
+          margin: 1rem;
+        }
+        h1 {
+          margin: 1rem 0rem 1rem 0rem;
+        }
+        img {
+          width: 100%;
+          max-width: 60rem;
+        }
+        .artist {
+          font-size: 1.5rem;
+          margin: 1rem 0rem 1rem 0rem;
+        }
+        .title {
+          font-size: 1.5rem;
+          margin: 1rem 0rem 1rem 0rem;
+        }
+        .album {
+          font-size: 1.5rem;
+          margin: 1rem 0rem 1rem 0rem;
+        }
       `}</style>
     </div >
   )
