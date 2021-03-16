@@ -16,8 +16,9 @@ export default function Home() {
   console.log(trackPlaying);
 
   return (
+
     <div className="page">
-      <h1>NOW PLAYING</h1>
+      <div className="heading">NOW PLAYING</div>
       <img src={trackPlaying.albumImageUrl} /><br />
       <div className="artist">artist: {trackPlaying.artist}</div>
       <div className="title">title: {trackPlaying.title}</div>
@@ -29,26 +30,28 @@ export default function Home() {
           padding: 1rem;
           margin: 1rem;
         }
-        h1 {
-          margin: 1rem 0rem 1rem 0rem;
+        .heading {
+          font-size: 2rem;
+          margin: .5rem 0rem .5rem 2rem;
         }
         img {
           width: 100%;
-          max-width: 60rem;
+          max-width: 40rem;
+          margin: .5rem 0rem .5rem 2rem;
         }
         .artist {
           font-size: 1.5rem;
-          margin: 1rem 0rem 1rem 0rem;
+          margin: .5rem 0rem .5rem 2rem;
         }
         .title {
           font-size: 1.5rem;
-          margin: 1rem 0rem 1rem 0rem;
+          margin: .5rem 0rem .5rem 2rem;
         }
         .album {
           font-size: 1.5rem;
-          margin: 1rem 0rem 1rem 0rem;
+          margin: .5rem 0rem .5rem 2rem;
         }
       `}</style>
-    </div >
+    </div>
   )
 }
