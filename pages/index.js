@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
 
 export default function Home() {
   const [trackPlaying, settrackPlaying] = useState([])
@@ -18,9 +17,6 @@ export default function Home() {
 
   return (
     <div className="page">
-      <Head>
-        <title>Now Playing on Spotify</title>
-      </Head>
       <h1>NOW PLAYING</h1>
       <img src={trackPlaying.albumImageUrl} /><br />
       <div className="artist">artist: {trackPlaying.artist}</div>
