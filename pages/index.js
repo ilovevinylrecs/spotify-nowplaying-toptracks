@@ -39,15 +39,15 @@ export default function Home() {
           margin: .5rem 0rem .5rem 0rem;
         }
         .artist {
-          font-size: 1.5rem;
+          font-size: 1rem;
           margin: .5rem 0rem .5rem 0rem;
         }
         .title {
-          font-size: 1.5rem;
+          font-size: 1rem;
           margin: .5rem 0rem .5rem 0rem;
         }
         .album {
-          font-size: 1.5rem;
+          font-size: 1rem;
           margin: .5rem 0rem .5rem 0rem;
         }
       `}</style>
