@@ -1,51 +1,14 @@
-import querystring from 'querystring';
-
-const {
-    SPOTIFY_CLIENT_ID: client_id,
-    SPOTIFY_CLIENT_SECRET: client_secret,
-    SPOTIFY_REFRESH_TOKEN: refresh_token,
-} = process.env;
-
-const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
-const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`;
-const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
-
-const getAccessToken = async () => {
-    const response = await fetch(TOKEN_ENDPOINT, {
-        method: 'POST',
-        headers: {
-            Authorization: `Basic ${basic}`,
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: querystring.stringify({
-            grant_type: 'refresh_token',
-            refresh_token,
-        }),
-    });
-
-    return response.json();
-};
-
-export const getTopTracks = async () => {
-    const { access_token } = await getAccessToken();
-
-    return fetch(TOP_TRACKS_ENDPOINT, {
-        headers: {
-            Authorization: `Bearer $(access_token)`,
-        }
-    });
-
-};
+import { getTopTracks } from '../../lib/spotify';
 
 export default async (_, res) => {
-    const data = await getTopTracks();
-    const { items } = await data.json();
+  const response = await getTopTracks();
+  const { items } = await response.json();
 
-    const tracks = items.slice(0, 10).map((track) => ({
-        artist: track.artists.map((_artist) => _artist.name).join(', '),
-        songUrl: track.external_urls.spotify,
-        title: track.name
-    }));
+  const tracks = items.slice(0, 10).map((track) => ({
+    artist: track.artists.map((_artist) => _artist.name).join(', '),
+    songUrl: track.external_urls.spotify,
+    title: track.name
+  }));
 
-    return data.status(200).json({ tracks });
+  return res.status(200).json({ tracks });
 };

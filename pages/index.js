@@ -1,56 +1,73 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Home() {
-  const [trackPlaying, settrackPlaying] = useState([])
+  const [nowPlaying, setnowPlaying] = useState([])
+  const [topTen, settopTen] = useState([])
 
   useEffect(() => {
     async function fetchTrack() {
-      const data = await fetch('api/spotify')
-      settrackPlaying(await data.json())
+      const data = await fetch('api/now-playing')
+      setnowPlaying(await data.json())
     }
     fetchTrack();
   }, [])
 
-  if (trackPlaying.length === 0) return 'Loading Spotify data.'
+  useEffect(() => {
+    async function fetchtopTen() {
+      const data = await fetch('api/top-tracks')
+      settopTen(await data.json())
+    }
+    fetchtopTen();
+  }, [])
 
-  console.log(trackPlaying);
+  if (nowPlaying.length === 0) return 'not currently listening'
 
   return (
 
     <div className="page">
-      <div className="heading">NOW PLAYING</div>
-      <img src={trackPlaying.albumImageUrl} /><br />
-      <div className="artist">artist: {trackPlaying.artist}</div>
-      <div className="title">title: {trackPlaying.title}</div>
-      <div className="album">album: {trackPlaying.album}</div>
+      <div className="now_playing">
+        NOW PLAYING
+      </div>
+      <img src={nowPlaying.albumImageUrl} /><br />
+        artist: 
+        <div className="text">{nowPlaying.artist}</div>
+        title: 
+        <div className="text">{nowPlaying.title}</div>
+        album: 
+        <div className="text">{nowPlaying.album}</div>
+      
+      <div className="top_tracks">Top Tracks</div>
+
+
+
       <style jsx>{`
         .page {
           font-family: monospace;
           padding: 1rem;
           margin: 1rem 1rem 0rem 2rem
         }
-        .heading {
-          font-size: 2rem;
-          margin: .5rem 0rem .5rem 0rem;
-        }
         img {
-          width: 90%;
+          width: 75%;
           max-width: 40rem;
-          margin: .5rem 0rem .5rem 0rem;
+          margin: 0rem 0rem 1rem 0rem
         }
-        .artist {
-          font-size: 1rem;
-          margin: .5rem 0rem .5rem 0rem;
+        .now_playing {
+          font-size: 2rem;
+          font-weight: bold;
+          margin: 2rem 0rem 2rem 0rem;
         }
-        .title {
-          font-size: 1rem;
-          margin: .5rem 0rem .5rem 0rem;
+        .top_tracks {
+          font-size: 2rem;
+          font-weight: bold;
+          margin: 3rem 0rem 2rem 0rem;
         }
-        .album {
+        .text {
           font-size: 1rem;
-          margin: .5rem 0rem .5rem 0rem;
+          font-weight: bold;
+          margin: 0.5rem 0rem 1rem 0rem;
         }
       `}</style>
+      
     </div>
   )
 }
