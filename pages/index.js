@@ -20,7 +20,11 @@ export default function Home() {
     fetchtopTen();
   }, [])
 
+  console.log(nowPlaying);
+
   if (nowPlaying.length === 0) return 'not currently listening'
+
+  console.log(topTen);
 
   return (
 
@@ -37,8 +41,7 @@ export default function Home() {
         <div className="text">{nowPlaying.album}</div>
       
       <div className="top_tracks">Top Tracks</div>
-
-
+     
 
       <style jsx>{`
         .page {
