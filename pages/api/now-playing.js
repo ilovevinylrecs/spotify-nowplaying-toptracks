@@ -4,6 +4,11 @@ const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
 
+console.log(client_id);
+console.log(client_secret);
+console.log(refresh_token);
+
+
 const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
@@ -43,8 +48,6 @@ export default async (_, res) => {
     }
 
     const song = await response.json();
-
-    console.log(song);
 
     const isPlaying = song.is_playing;
     const title = song.item.name;

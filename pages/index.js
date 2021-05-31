@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 export default function Home() {
   const [nowPlaying, setnowPlaying] = useState([])
-  const [topTen, settopTen] = useState([])
 
   useEffect(() => {
     async function fetchTrack() {
@@ -12,22 +11,9 @@ export default function Home() {
     fetchTrack();
   }, [])
 
-  useEffect(() => {
-    async function fetchtopTen() {
-      const data = await fetch('api/top-tracks')
-      settopTen(await data.json())
-    }
-    fetchtopTen();
-  }, [])
-
-  console.log(nowPlaying);
-
   if (nowPlaying.length === 0) return 'not currently listening'
 
-  console.log(topTen);
-
   return (
-
     <div className="page">
       <div className="now_playing">
         NOW PLAYING
@@ -39,10 +25,7 @@ export default function Home() {
         <div className="text">{nowPlaying.title}</div>
         album: 
         <div className="text">{nowPlaying.album}</div>
-      
-      <div className="top_tracks">Top Tracks</div>
      
-
       <style jsx>{`
         .page {
           font-family: monospace;
