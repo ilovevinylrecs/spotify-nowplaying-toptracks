@@ -11,7 +11,7 @@ export default function NowPlayingModule() {
     fetchTrack();
   }, [])
 
-  if (nowPlaying.length === 0) return 'not currently listening'
+  if (nowPlaying.length === 0) return 'currently listening to vinyl'
 
   return (
     <div className="page">

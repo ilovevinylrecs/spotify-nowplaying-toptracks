@@ -11,7 +11,7 @@ export default function NowPlayingModule() {
     fetchTrack();
   }, [])
 
-  if (nowPlaying.length === 0) return 'not currently listening'
+//   if (nowPlaying.length === 0) return 'currently listening to vinyl'
 
   return (
     <center>
@@ -27,8 +27,7 @@ export default function NowPlayingModule() {
                     <b>album:</b> {nowPlaying.album}
                 </div>
             </div>
-            <div className="column">
-            </div>
+            <div className="column"></div>
         
             <style jsx>{`
             .container {
