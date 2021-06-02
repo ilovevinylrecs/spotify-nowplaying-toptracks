@@ -13,8 +13,6 @@ export default function NowPlayingModule() {
     fetchTrack();
   }, [])
 
-  if (nowPlaying.length === 0) return 'lost connection to Spotify API'
-
   return (
     <center>
       { nowPlaying.isPlaying === false 
@@ -67,13 +65,13 @@ export default function NowPlayingModule() {
             <div className="column">
                 <div className="text">
                     <b>NOW PLAYING</b><br />
-                    <b>artist:</b> {nowPlaying.artist}<br />
-                    <b>title:</b> {nowPlaying.title}<br />
-                    <b>album:</b> {nowPlaying.album}
+                    artist: <b>{nowPlaying.artist}</b><br />
+                    title: <b>{nowPlaying.title}</b><br />
+                    album: <b>{nowPlaying.album}</b>
                 </div>
             </div>
             <div className="image-column">
-              <Image src="/spotify_icon.png" alt="Spotify Logo" width="30" height="30" />
+              <Image src="/spotify_icon.png" alt="Spotify Logo" width="50" height="50" />
             </div>
               
             <style jsx>{`
@@ -91,7 +89,7 @@ export default function NowPlayingModule() {
             }
             .image-column {
             display: flex;
-            margin: 1rem 2rem 1rem 1rem;
+            margin: 0rem 2rem 0rem 1rem;
             }
             img {
             max-width: 5rem;
@@ -101,6 +99,7 @@ export default function NowPlayingModule() {
             font-family: monospace;
             font-size: .75rem;
             text-align: left;
+            line-height: 1.4;
             justify-content: center;
             align-items: center;
             margin: 0rem 2rem 0rem 0rem;
