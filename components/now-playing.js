@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
+
 
 export default function NowPlayingModule() {
   const [nowPlaying, setnowPlaying] = useState([])
@@ -27,7 +29,9 @@ export default function NowPlayingModule() {
                     <b>album:</b> {nowPlaying.album}
                 </div>
             </div>
-            <div className="column"></div>
+            <div className="image-column">
+              <Image src="/Spotify_Icon_RGB_Black 2.png" alt="me" width="30" height="30" />
+            </div>
         
             <style jsx>{`
             .container {
@@ -36,15 +40,19 @@ export default function NowPlayingModule() {
             align-items: center;
             border: 1px solid silver;
             border-radius: .5rem;
-            width: 75%;
-            max-width: 40rem;
+            max-width: 25rem;
             }  
             .column {
             display: flex;
+            margin: .5rem 1rem .5rem .5rem;
+            }
+            .image-column {
+            display: flex;
+            margin: 1rem 2rem 1rem 1rem;
             }
             img {
             max-width: 5rem;
-            margin: .5rem;
+            border-radius: .5rem;
             }
             .text {
             font-family: monospace;
@@ -52,7 +60,7 @@ export default function NowPlayingModule() {
             text-align: left;
             justify-content: center;
             align-items: center;
-            margin: .5rem;
+            margin: 0rem 2rem 0rem 0rem;
             }
             `}</style>
     </div>
