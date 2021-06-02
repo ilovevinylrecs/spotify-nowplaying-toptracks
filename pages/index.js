@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Home() {
+export default function NowPlayingModule() {
   const [nowPlaying, setnowPlaying] = useState([])
 
   useEffect(() => {
@@ -11,7 +11,7 @@ export default function Home() {
     fetchTrack();
   }, [])
 
-  if (nowPlaying.length === 0) return 'not currently listening'
+  if (nowPlaying.length === 0) return 'currently listening to vinyl'
 
   return (
     <div className="page">
