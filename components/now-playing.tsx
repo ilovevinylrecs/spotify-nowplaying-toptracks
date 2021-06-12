@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 
-
 export default function NowPlayingModule() {
-  const [nowPlaying, setnowPlaying] = useState([])
+  const [nowPlaying, setnowPlaying] = useState<any>([])
 
   useEffect(() => {
     async function fetchTrack() {
@@ -14,7 +13,13 @@ export default function NowPlayingModule() {
   }, [])
 
   return (
-    <center>
+    <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
       { nowPlaying.isPlaying === false 
         ? <div className="container">
             <div className="column">
@@ -107,6 +112,6 @@ export default function NowPlayingModule() {
             `}</style>
         </div>
       }
-    </center>
+    </div>
   )
 }
