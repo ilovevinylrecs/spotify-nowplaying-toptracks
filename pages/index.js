@@ -1,59 +1,83 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
+import Head from 'next/head'
 
-export default function NowPlayingModule() {
-  const [nowPlaying, setnowPlaying] = useState([])
+export default function TopTenTracks() {
+  const [toptenList, settoptenList] = useState([])
 
   useEffect(() => {
-    async function fetchTrack() {
-      const data = await fetch('api/now-playing')
-      setnowPlaying(await data.json())
+    async function fetchtoptenList() {
+      const list = await fetch('api/top-tracks')
+      settoptenList(await list.json())
     }
-    fetchTrack();
+    fetchtoptenList();
   }, [])
 
-  if (nowPlaying.length === 0) return 'currently listening to vinyl'
+  if (toptenList.length === 0) return 'cannot connect to Spotify database'
 
   return (
     <div className="page">
-      <div className="now_playing">
-        NOW PLAYING
+      <Head>
+        <title>Andy Nystrom - Current Top Ten</title>
+      </Head>
+    <center>
+      <div className="title">
+        CURRENT TOP TEN
       </div>
-      <img src={nowPlaying.albumImageUrl} /><br />
-        artist: 
-        <div className="text">{nowPlaying.artist}</div>
-        title: 
-        <div className="text">{nowPlaying.title}</div>
-        album: 
-        <div className="text">{nowPlaying.album}</div>
-     
+    </center>
+
+    <div className="top-ten-text">
+        {toptenList.map((topTen) => (
+          <>
+              <div className="container">
+
+                    <div className="image-column">
+                      <Link href={topTen.songUrl}><a target="_blank">
+                      <img className="top-ten-img" src={topTen.albumImageUrl} />
+                      </a></Link>
+                    </div>
+                    <div className="column">
+                      <b>artist:</b><br />
+                      {topTen.artist}<br />
+                      <b>track:</b><br />
+                      {topTen.title}<br />
+                    </div>
+
+              </div>
+          </>)
+        )}
+
+      </div>
+
       <style jsx>{`
-        .page {
-          font-family: monospace;
-          padding: 1rem;
-          margin: 1rem 1rem 0rem 2rem
-        }
-        img {
-          width: 75%;
-          max-width: 40rem;
-          margin: 0rem 0rem 1rem 0rem
-        }
-        .now_playing {
-          font-size: 2rem;
-          font-weight: bold;
-          margin: 2rem 0rem 2rem 0rem;
-        }
-        .top_tracks {
-          font-size: 2rem;
-          font-weight: bold;
-          margin: 3rem 0rem 2rem 0rem;
-        }
-        .text {
-          font-size: 1rem;
-          font-weight: bold;
-          margin: 0.5rem 0rem 1rem 0rem;
-        }
+      .page {
+      font-family: monospace;
+      }
+      .title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 2rem 0rem 2rem 0rem;
+      }
+      .container {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      margin: 0.5rem 1rem 0.5rem 1rem;
+      }
+      .image-column {
+      margin: 0rem 0rem 0rem 0rem;
+      }
+      .column {
+      margin: 0rem 1rem 0rem 1rem;
+      }
+      .top-ten-img {
+      max-width: 8rem;
+      }
+      .top-ten-text {
+      font-size: 1rem;
+      margin: 0rem 0rem 3rem 0rem;
+      }
       `}</style>
-      
     </div>
   )
 }
