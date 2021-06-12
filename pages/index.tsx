@@ -20,40 +20,38 @@ export default function TopTenTracks() {
       <Head>
         <title>Andy Nystrom - Current Top Ten</title>
       </Head>
-    <center>
+
       <div className="title">
         CURRENT TOP TEN
       </div>
-    </center>
+      
+      {toptenList.map((topTen) => (
+        <div className="container">
+          <div className="image-column">
+            <Link href={topTen.songUrl}><a target="_blank">
+            <img className="top-ten-img" src={topTen.albumImageUrl} />
+            </a></Link>
+          </div>
 
-    <div className="top-ten-text">
-        {toptenList.map((topTen) => (
-          <>
-              <div className="container">
+          <div className="column">
+            <div className="top-ten-text">
+              <b>artist:</b><br />
+              {topTen.artist}<br />
+              <b>track:</b><br />
+              {topTen.title}<br />
+            </div>
+          </div>
+        </div>
+      ))}
 
-                    <div className="image-column">
-                      <Link href={topTen.songUrl}><a target="_blank">
-                      <img className="top-ten-img" src={topTen.albumImageUrl} />
-                      </a></Link>
-                    </div>
-                    <div className="column">
-                      <b>artist:</b><br />
-                      {topTen.artist}<br />
-                      <b>track:</b><br />
-                      {topTen.title}<br />
-                    </div>
-
-              </div>
-          </>)
-        )}
-
-      </div>
 
       <style jsx>{`
       .page {
       font-family: monospace;
+      margin: 0rem 0rem 3rem 0rem;
       }
       .title {
+      text-align: center;
       font-size: 2rem;
       font-weight: bold;
       margin: 2rem 0rem 2rem 0rem;
@@ -75,7 +73,7 @@ export default function TopTenTracks() {
       }
       .top-ten-text {
       font-size: 1rem;
-      margin: 0rem 0rem 3rem 0rem;
+      line-height: 1.3rem;
       }
       `}</style>
     </div>
