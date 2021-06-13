@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 
-export default function TopTenTracks() {
+export default function toptenTracks() {
   const [toptenList, settoptenList] = useState([])
 
   useEffect(() => {

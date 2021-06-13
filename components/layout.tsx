@@ -1,4 +1,3 @@
-import Footer from './footer'
 import NowPlayingModule from './now-playing'
 
 const Layout = ({ children }) => {
@@ -6,7 +5,6 @@ const Layout = ({ children }) => {
         <div>
             { children }
             <NowPlayingModule />
-            {/* <Footer /> */}
         </div>
     );
 };
