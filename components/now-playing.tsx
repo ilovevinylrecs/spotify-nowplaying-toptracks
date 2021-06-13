@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function NowPlayingModule() {
   const [nowPlaying, setnowPlaying] = useState<any>([])
 
